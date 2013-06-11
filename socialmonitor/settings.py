@@ -201,31 +201,9 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 
-# session settings
-SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
-SESSION_COOKIE_HTTPONLY = True
-
-# message settings
-MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
-
 # django endless pagination settings
 ENDLESS_PAGINATION_PREVIOUS_LABEL = u'Anterior'
 ENDLESS_PAGINATION_NEXT_LABEL = u'Próximo'
-
-# django jenkins settings
-PROJECT_APPS = (
-    'accounts',
-    'staticpages',
-)
-JENKINS_TASKS = (
-    #'django_jenkins.tasks.run_pylint',
-    'django_jenkins.tasks.run_pep8',
-    'django_jenkins.tasks.run_pyflakes',
-    'django_jenkins.tasks.with_coverage',
-    'django_jenkins.tasks.run_sloccount',
-    'django_jenkins.tasks.django_tests',
-    #'django_jenkins.tasks.with_local_celery'
-)
 
 # accounts app settings
 REGISTER_MAX_AGE = 60 * 60 * 24 * 7 # in seconds
@@ -235,7 +213,7 @@ TWITTER_APP_SECRET = '35vd3cWHMMpiKZpDJPTms0ux8uoD7s2cj9dnqkXtQI'
 TWITTER_CALLBACK_URL = 'http://socialmonitor.com:8000/account/connect/twitter/callback/'
 
 # django celery settings
-BROKER_URL = 'redis://localhost:6379/0'
+BROKER_URL = 'django://'
 
 CELERY_ALWAYS_EAGER = True
 
