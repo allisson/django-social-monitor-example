@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Painel - Buscas{% endblock %}
+
+
+{% block content %}
+{% include 'dashboard/includes/tabs.html' %}
+
+<div class="page-header">
+  <h3>Buscas <small>Aqui você acompanha suas buscas nas redes sociais.</small></h3>
+</div>
+
+<a class="btn btn-primary" href="{% url 'dashboard_search_new' %}">Adicionar</a>
+
+<br>
+<br>
+
+{% if social_search_list %}
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Conta</th>
+      <th>Tipo de Busca</th>
+      <th>Termo da Busca</th>
+      <th>Última Coleta</th>
+      <th>Quantidade de Itens</th>
+      <th>Criado em</th>
+      <th>Acões</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for social_search in social_search_list %}
+    <tr>
+      <td>{{ social_search.id }}</td>
+      <td>{{ social_search.social_account }}</td>
+      <td>{{ social_search.get_search_type_display }}</td>
+      <td>{{ social_search.search_term }}</td>
+      <td>{{ social_search.last_collection_date }}</td>
+      <td>{{ social_search.item_count }}</td>
+      <td>{{ social_search.created_on }}</td>
+      <td>
+        <a href="{% url 'dashboard_search_edit' social_search.id %}">Editar</a>
+        <a href="{% url 'dashboard_search_delete' social_search.id %}">Excluir</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Sem buscas cadastradas.</p>
+{% endif %}
+
+{% endblock %}
+
+{% block extrajs %}
+<script>
+$(document).ready(function(){
+  
+  $('.nav-panel').addClass('active');
+  $('.tabs-search').addClass('active');
+  
+});
+</script>
+{% endblock %}

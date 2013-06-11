@@ -1,0 +1,7 @@
+*.pyc
+*.swp
+*.sqlite
+settings_local.py
+.DS_Store
+socialmonitor/static/CACHE/
+celerybeat-schedule.db

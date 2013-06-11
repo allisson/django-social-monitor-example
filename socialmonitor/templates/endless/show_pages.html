@@ -1,0 +1,11 @@
+<div class="pagination">
+  <ul>
+{% for page in pages %}
+    {% if page.is_current %}
+            <li class="active"><a class="endless_page_link" href="#" >{{ page.label }}</a></li>
+    {% elif page != '' %}
+            <li>{{ page|default_if_none:'<a class="endless_page_link" href="#" >...</a>' }}</li>
+    {% endif %}
+{% endfor %}
+  </ul>
+</div>

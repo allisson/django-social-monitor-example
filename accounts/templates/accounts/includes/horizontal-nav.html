@@ -1,0 +1,14 @@
+<nav class="aui-navgroup aui-navgroup-horizontal">
+  <div class="aui-navgroup-inner">
+    <div class="aui-navgroup-primary">
+      <ul class="aui-nav">
+        <li class="account-horizontal-nav-overview"><a href="{% url 'accounts_profile_detail' user_data.username %}">Informações</a></li>
+        {% if request.user == user_data %}
+        <li class="account-horizontal-nav-profile"><a href="{% url 'accounts_profile_edit' user_data.username %}">Perfil</a></li>
+        <li class="account-horizontal-nav-password"><a href="{% url 'accounts_profile_password' user_data.username %}">Senha</a></li>
+        <li class="account-horizontal-nav-email"><a href="{% url 'accounts_profile_email' user_data.username %}">E-mail</a></li>
+        {% endif %}
+      </ul>
+    </div><!-- .aui-navgroup-primary -->
+  </div><!-- .aui-navgroup-inner -->
+</nav>

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Contas - Excluir{% endblock %}
+
+
+{% block content %}
+
+<div class="page-header">
+  <h3>Contas <small>Excluir</small></h3>
+</div>
+
+<form action="." method="post" id="form-social-account-delete">{% csrf_token %}
+  <p>
+    Tem certeza que deseja excluir a conta <strong>{{ account }}</strong>?
+  </p>
+
+  <div class="btn-group">
+    <button class="btn btn-danger" type="submit">Sim</button>
+    <a href="{% url 'accounts_social_account_list' %}" class="btn">Não</a>
+  </div>
+  
+</form>
+
+
+
+{% endblock %}

@@ -1,0 +1,133 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock %} - Social Monitor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{% block head_description %}{% endblock %}">
+  <meta name="author" content="{% block head_author %}{% endblock %}">
+
+  <!-- Le styles -->
+  <link href="{% static "site/bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+  {% comment %}
+  <style>
+  body {
+    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+  }
+  {% endcomment %}
+  </style>
+  <link href="{% static "site/bootstrap/css/bootstrap-responsive.css" %}" rel="stylesheet">
+  <link href="{% static "site/bootstrap/css/todc-bootstrap.css" %}" rel="stylesheet">
+  <link href="{% static "site/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet">
+  <!--[if IE 7]>
+    <link rel="stylesheet" href="{% static "site/font-awesome/css/font-awesome-ie7.min.css" %}">
+  <![endif]-->
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+  <script src="{% static "site/bootstrap/js/html5shiv.js" %}"></script>
+  <![endif]-->
+
+  {% comment %}
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+  <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  {% endcomment %}
+  {% block extrahead %}{% endblock %}
+</head>
+
+  <body>
+
+    <div class="navbar navbar-masthead">
+      <div class="navbar-inner">
+        <div class="container">
+
+          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+
+          <!-- Be sure to leave the brand out there if you want it shown -->
+          <a class="brand" href="/">Social Monitor</a>
+
+          <!-- Everything you want hidden at 940px or less, place within here -->
+          <div class="nav-collapse collapse">
+            <!-- .nav, .navbar-search, .navbar-form, etc -->
+            {% if user.is_authenticated %}
+            
+            <ul class="nav">
+              <li class="nav-panel">
+                <a href="{% url 'dashboard_index' %}">Painel</a>
+              </li>
+            </ul>
+            <ul class="nav pull-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  {{ user.get_full_name }}
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="{% url 'accounts_social_account_list' %}">Contas</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="{% url 'accounts_logout' %}">Sair</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            
+            {% else %}
+            
+            <ul class="nav pull-right">
+              <li>
+                <a href="{% url 'accounts_login' %}">
+                  <i class="icon-signin"></i>
+                  Login
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'accounts_register_confirm_email' %}">
+                  <i class="icon-user"></i>
+                  Cadastro
+                </a>
+              </li>
+            </ul>
+            
+            {% endif %}
+          
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div id="messages">                                                       
+        {% for message in messages %}                                           
+        <div class="alert alert-{{ message.tags }}">                            
+          <a class="close" data-dismiss="alert">&times;</a>                     
+          <strong>{{ message }}</strong>                                        
+        </div>                                                                  
+        {% endfor %}                                                            
+      </div> 
+
+      {% block content %}{% endblock %}
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static "site/js/jquery-1.10.1.min.js" %}"></script>
+    <script src="{% static "site/bootstrap/js/bootstrap.min.js" %}"></script>
+    {% block extrajs %}{% endblock %}
+  </body>
+</html>

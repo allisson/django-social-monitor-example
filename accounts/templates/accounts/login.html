@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}Login{% endblock %}
+
+
+{% block content %}
+
+<div class="span6 offset3">
+<div class="page-header">
+  <h3>Login <small><a href="{% url 'accounts_forgot_password' %}">Esqueceu a senha?</a></small></h3>
+</div>
+
+{% crispy form %}
+</div>
+
+{% endblock %}

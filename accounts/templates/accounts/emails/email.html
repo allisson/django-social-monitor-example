@@ -1,0 +1,23 @@
+{% load static from staticfiles %}
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{{ site.name }} Confirmar novo e-mail</title>
+</head>
+<body>
+<p>
+  Olá,
+</p>
+<p>
+  Clique no link abaixo para confirmar a mudança de e-mail no {{ site.name }}.
+</p>
+<p>
+  <a href="http://{{ site.domain }}{% url 'accounts_profile_email_confirm' user.username signed_value %}">Confirmar e-mail.</a>
+</p>
+<p>
+  Obrigado,<br />
+  {{ site.name }}
+</p>
+</body>
+</html>

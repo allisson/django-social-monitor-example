@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}Painel - Buscas - Nova{% endblock %}
+
+
+{% block content %}
+{% include 'dashboard/includes/tabs.html' %}
+
+
+<div class="page-header">
+  <h3>Nova Busca <small><a href="{% url 'dashboard_search_list' %}">Cancelar</a></small></h3>
+</div>
+
+{% crispy form %}
+
+
+{% endblock %}
+
+{% block extrajs %}
+<script>
+$(document).ready(function(){
+  
+  $('.nav-panel').addClass('active');
+  $('.tabs-search').addClass('active');
+  
+});
+</script>
+{% endblock %}

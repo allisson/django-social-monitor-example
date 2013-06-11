@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Contas{% endblock %}
+
+
+{% block content %}
+
+<div class="page-header">
+  <h3>Contas <small>Aqui você adiciona suas contas das redes sociais.</small></h3>
+</div>
+
+<div class="btn-group">
+  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+    Adicionar
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li>
+      <a href="{% url 'accounts_connect_twitter' %}">Twitter</a>
+    </li>
+  </ul>
+</div>
+
+<br>
+<br>
+
+{% if account_list %}
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Site</th>
+      <th>Usuário</th>
+      <th>Id do usuário</th>
+      <th>Adicionado em</th>
+      <th>Acões</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for account in account_list %}
+    <tr>
+      <td>{{ account.get_site_display }}</td>
+      <td>{{ account.account_screen_name }}</td>
+      <td>{{ account.account_user_id }}</td>
+      <td>{{ account.created_on }}</td>
+      <td><a href="{% url 'accounts_social_account_delete' account.id %}">Excluir</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Sem contas cadastradas.</p>
+{% endif %}
+
+{% endblock %}

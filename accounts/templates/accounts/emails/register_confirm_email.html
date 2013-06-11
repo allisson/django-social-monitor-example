@@ -1,0 +1,23 @@
+{% load static from staticfiles %}
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{{ site.name }} Confirme sua conta</title>
+</head>
+<body>
+<p>
+  Olá,
+</p>
+<p>
+  Clique no link abaixo para confirmar seu e-mail para uma nova conta no {{ site.name }}.
+</p>
+<p>
+  <a href="http://{{ site.domain }}{% url 'accounts_register' signed_value %}">Confirmar e-mail</a>
+</p>
+<p>
+  Obrigado,<br />
+  {{ site.name }}
+</p>
+</body>
+</html>

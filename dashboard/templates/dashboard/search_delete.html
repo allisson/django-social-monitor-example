@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}Painel - Buscas - Excluir{% endblock %}
+
+
+{% block content %}
+{% include 'dashboard/includes/tabs.html' %}
+
+
+<div class="page-header">
+  <h3>Excluir Busca <small><a href="{% url 'dashboard_search_list' %}">Cancelar</a></small></h3>
+</div>
+
+<form action="." method="post" id="form-social-search-delete">{% csrf_token %}
+  <p>
+    Tem certeza que deseja excluir a busca <strong>{{ social_search }}</strong>?
+  </p>
+
+  <div class="btn-group">
+    <button class="btn btn-danger" type="submit">Sim</button>
+    <a href="{% url 'dashboard_search_list' %}" class="btn">Não</a>
+  </div>
+  
+</form>
+
+
+{% endblock %}
+
+{% block extrajs %}
+<script>
+$(document).ready(function(){
+  
+  $('.nav-panel').addClass('active');
+  $('.tabs-search').addClass('active');
+  
+});
+</script>
+{% endblock %}

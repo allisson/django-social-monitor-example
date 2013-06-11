@@ -1,0 +1,25 @@
+{% load static from staticfiles %}
+
+<header class="aui-page-header">
+  <div class="aui-page-header-inner">
+    <div class="aui-page-header-image">
+      <div class="aui-avatar aui-avatar-xlarge">
+        <div class="aui-avatar-inner">
+          <img src="{% static "site/aui/docs/img/user-avatar-blue-48@2x.png" %}">
+        </div>
+      </div>
+    </div>
+    <div class="aui-page-header-main">
+      <h1>{{ user_data.get_full_name }}</h1>
+      <p>Membro desde {{ user_data.date_joined }}</p>
+    </div>
+    {% if user != user_data %}
+    <div class="aui-page-header-actions">
+      <div class="aui-buttons">
+        <button class="aui-button">Enviar mensagem</button>
+        <button class="aui-button">Seguir</button>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</header>

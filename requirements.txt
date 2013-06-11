@@ -1,0 +1,6 @@
+Django<1.6
+gunicorn>=0.17.4
+django-endless-pagination>=1.1
+twython>=2.10.1
+django-celery>=3.0.17
+django-crispy-forms>=1.2.8
