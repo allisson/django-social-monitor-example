@@ -227,3 +227,6 @@ try:
     execfile(os.path.join(PROJECT_PATH, 'settings_local.py'), globals(), locals())
 except IOError:
     pass
+
+# crispy settings
+CRISPY_TEMPLATE_PACK = 'bootstrap' 
